@@ -9,3 +9,13 @@ describe('#add', function() {
 		done();
 	});
 });
+
+describe('#addWrong', function() {
+	it('2+3=5', function(done) {
+		var add = function() {
+			return 2 + 3;
+		}
+		assert.equal(6, add());
+		done();
+	});
+});
