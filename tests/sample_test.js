@@ -15,6 +15,7 @@ describe('#addWrong', function() {
 		var add = function() {
 			return 2 + 3;
 		}
+		console.log('hi');
 		assert.equal(6, add());
 		done();
 	});
