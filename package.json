@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha tests",
     "reset":"sh scripts/resetEnv.sh",
-    "setup":"sh scripts/deploy.sh"
+    "setup":"sh scripts/deploy.sh "
   },
   "repository": {
     "type": "git",
