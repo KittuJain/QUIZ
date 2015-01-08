@@ -4,7 +4,9 @@
   "description": "quiz app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests",
+    "reset":"sh scripts/resetEnv.sh",
+    "setup":"sh scripts/deploy.sh "
   },
   "repository": {
     "type": "git",
