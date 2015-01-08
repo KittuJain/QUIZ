@@ -23,12 +23,32 @@ describe('quiz', function() {
 		});
 
 		it('login ram with emailId as ram@email.com and password as ram',function(done){
-			var  user = {"email":"ram@email.com","password":"ram"};
+			var  user = {"email":"abc@email.com","password":"abc"};
 			quiz.getUser(user.email,function(err,user){
-				assert.deepEqual(user,{"useremail":"ram@email.com","password":"ram"});
+				assert.deepEqual(user,{"useremail":"abc@email.com","password":"abc"});
 				done();
 			});
-			done();
 		});
 	});
+
+	describe('#getTopics', function() {
+		it('retrives the all the topic ids,names other than the owners', function(done) {
+			var userEmail = 'abc@email.com';
+			var expected = [{
+				id: 2,
+				name: 'SS',
+				duration: '00:20:00'
+			}, {
+				id: 3,
+				name: 'Language',
+				duration: '00:15:00'
+			}];
+			quiz.getTopics(userEmail, function(err, topics) {
+				assert.notOk(err);
+				assert.deepEqual(topics, expected);
+				done();
+			});
+		});
+	});
+
 });
