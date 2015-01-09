@@ -50,7 +50,11 @@ var loginUser = function(req,res,next){
 		}
 		else{
 			var isValidPassword = bcrypt.compareSync(user.password,existingUser.password);
-			(isValidPassword) ? res.redirect('/dashboard') : 
+			if(isValidPassword){
+				req.session.userEmail = user.email;
+				res.redirect('/dashboard') 	
+			}
+			else
 			res.render('login',{error:'Incorrect E-mail Id or password'});
 		}
 	});
