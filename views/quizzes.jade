@@ -6,6 +6,10 @@ block title
 block content
 	center
 		h1 Quizzes
+	p(align='right') #{email} 
+		a(href='/dashboard') dashboard
+
+	hr
 	if quizzes
 		center
 			table(width='750px')
