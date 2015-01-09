@@ -1,0 +1,36 @@
+extends layout
+block vars
+	- var title = "quizzes"
+block title
+	title #{title}
+block content
+	center
+		h1 Quizzes
+	if quizzes
+		center
+			table
+				tr
+					td
+						h3 Action
+					td
+						h3 Name of the quizzes
+					td
+						h3 Duration
+				each quiz in quizzes
+					tr
+						td 
+							button(type='submit' onclick="/quiz/#{quiz.id}") Join
+						td 
+							center #{quiz.name}
+						td #{quiz.duration}
+	else
+		center
+			br 
+			br 
+			br 
+			br 
+			br 
+			br 
+			br
+			h2 No quizzes found
+		
