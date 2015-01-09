@@ -5,28 +5,40 @@ var router = express.Router();
 var bcrypt = require("bcryptjs");
 
 router.get('/', function(req, res) {
-  res.render('index');
+	res.render('index');
 });
 
-router.get('/login',function(req,res){
+router.get('/login', function(req, res) {
 	res.render('login');
 });
 
-router.post('/login',function(req,res,next){
-	if(req.body.exist){
-		loginUser(req,res,next);
-	}else{
-		registerUser(req,res,next);
+router.get('/quizzes', function(req, res) {
+	console.log(quiz)
+	quiz.getTopics('abc@email.com', function(err, topics) {
+		var quizzes = {};
+		topics.length == 0 ? quizzes.quizzes = false : quizzes.quizzes = topics;
+		res.render('quizzes', quizzes);
+	});
+});
+
+router.post('/login', function(req, res, next) {
+	if (req.body.exist) {
+		loginUser(req, res, next);
+	} else {
+		registerUser(req, res, next);
 	}
 });
 
-var registerUser = function(req,res,next){
-	var password  = bcrypt.hashSync(req.body.password);
-	var new_user = {"email":req.body.email,"password":password};
-	quiz.addUser(new_user,function(err,user){
+var registerUser = function(req, res, next) {
+	var password = bcrypt.hashSync(req.body.password);
+	var new_user = {
+		"email": req.body.email,
+		"password": password
+	};
+	quiz.addUser(new_user, function(err, user) {
 		req.session.userEmail = user.email;
-		if(!err)
-			res.redirect('/dashboard');		
+		if (!err)
+			res.redirect('/dashboard');
 	});
 };
 
@@ -44,8 +56,8 @@ var loginUser = function(req,res,next){
 	});
 };
 
-router.get('/dashboard',function(req,res){
+router.get('/dashboard', function(req, res) {
 	res.render('dashboard');
-})
+});
 
 module.exports = router;
