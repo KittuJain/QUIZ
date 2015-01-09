@@ -16,9 +16,9 @@ router.get('/login', function(req, res) {
 	res.render('login');
 });
 
-router.get('/quizzes', requireLogin,function(req, res) {
-	console.log(quiz)
-	quiz.getTopics('abc@email.com', function(err, topics) {
+router.get('/quizzes',requireLogin function(req, res) {
+	console.log(req.session.userEmail)
+	quiz.getTopics(req.session.userEmail, function(err, topics) {
 		var quizzes = {};
 		topics.length == 0 ? quizzes.quizzes = false : quizzes.quizzes = topics;
 		res.render('quizzes', quizzes);
@@ -45,6 +45,7 @@ var registerUser = function(req, res, next) {
 		"password": password
 	};
 	quiz.addUser(new_user, function(err, user) {
+
 		if (!err){ 
 			req.session.userEmail = user.useremail;
 			res.redirect('/dashboard');
