@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+.options {
+	border-right:solid 1px black;
+	padding: 50px ;
+	display: inline-block;
+}
