@@ -17,5 +17,9 @@ block content
 		| I am already a user
 		br
 		input(type="submit" value="Login")
+	if(error)
+		#errorMessage
+			| #{error}
+
 
 	
