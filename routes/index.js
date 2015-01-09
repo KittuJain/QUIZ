@@ -19,7 +19,7 @@ router.get('/login', function(req, res) {
 router.get('/quizzes',requireLogin, function(req, res) {
 	console.log(req.session.userEmail)
 	quiz.getTopics(req.session.userEmail, function(err, topics) {
-		var quizzes = {};
+		var quizzes = {email:req.session.userEmail};
 		topics.length == 0 ? quizzes.quizzes = false : quizzes.quizzes = topics;
 		res.render('quizzes', quizzes);
 	});
@@ -73,8 +73,8 @@ var loginUser = function(req,res,next){
 	});
 };
 
-router.get('/dashboard', requireLogin,function(req, res) {
-	res.render('dashboard');
+router.get('/dashboard', function(req, res) {
+	res.render('dashboard',{email:req.session.userEmail});
 });
 
 module.exports = router;
