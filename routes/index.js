@@ -8,11 +8,15 @@ router.get('/', function(req, res) {
 	res.render('index');
 });
 
+var requireLogin = function(req,res,next){
+	req.session.userEmail ? next(): res.redirect('/login');
+};
+
 router.get('/login', function(req, res) {
 	res.render('login');
 });
 
-router.get('/quizzes', function(req, res) {
+router.get('/quizzes', requireLogin,function(req, res) {
 	console.log(quiz)
 	quiz.getTopics('abc@email.com', function(err, topics) {
 		var quizzes = {};
@@ -25,7 +29,12 @@ router.post('/login', function(req, res, next) {
 	if (req.body.exist) {
 		loginUser(req, res, next);
 	} else {
-		registerUser(req, res, next);
+		quiz.getUser(req.body.email,function(err,ext){
+			if(ext)
+				res.render('login',{error:"User Email ID already exists"});
+			else
+				registerUser(req, res, next);
+		});
 	}
 });
 
@@ -36,9 +45,12 @@ var registerUser = function(req, res, next) {
 		"password": password
 	};
 	quiz.addUser(new_user, function(err, user) {
-		req.session.userEmail = user.email;
-		if (!err)
+		if (!err){ 
+			req.session.userEmail = user.useremail;
 			res.redirect('/dashboard');
+		}else{
+			res.render('login',{error:"Server Error..."});
+		}
 	});
 };
 
@@ -55,12 +67,12 @@ var loginUser = function(req,res,next){
 				res.redirect('/dashboard') 	
 			}
 			else
-			res.render('login',{error:'Incorrect E-mail Id or password'});
+				res.render('login',{error:'Incorrect E-mail Id or password'});
 		}
 	});
 };
 
-router.get('/dashboard', function(req, res) {
+router.get('/dashboard', requireLogin,function(req, res) {
 	res.render('dashboard');
 });
 
