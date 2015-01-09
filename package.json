@@ -4,7 +4,7 @@
   "description": "quiz app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests",
+    "test": "sh scripts/resetEnv.sh && sh scripts/deploy.sh && mocha tests",
     "reset":"sh scripts/resetEnv.sh",
     "setup":"sh scripts/deploy.sh "
   },
