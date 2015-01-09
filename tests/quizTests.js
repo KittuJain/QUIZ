@@ -22,10 +22,26 @@ describe('quiz', function() {
 			});
 		});
 
-		it('login ram with emailId as ram@email.com and password as ram',function(done){
-			var  user = {"email":"abc@email.com","password":"abc"};
-			quiz.getUser(user.email,function(err,user){
-				assert.deepEqual(user,{"useremail":"abc@email.com","password":"abc"});
+		it('login abc with emailId as abc@email.com and password as abc',function(done){
+			var user = {"email":"abc@email.com","password":"abc"};
+			quiz.getUser(user.email,function(err,existing_user){
+				assert.deepEqual(existing_user,{"useremail":"abc@email.com","password":"abc"});
+				done();
+			});
+		});
+
+		it("doesn't login abc with emailId as abc@email.com and wrong password as pqr",function(done){
+			var user = {"email":"abc@email.com","password":"pqr"};
+			quiz.getUser(user.email,function(err,existing_user){
+				assert.notEqual(existing_user,user);
+				done();
+			});
+		});
+
+		it("doesn't login krati when not registered and tries to login",function(done){
+			var user = {"email":"krati@email.com","password":"krati"};
+			quiz.getUser(user.email,function(err,existing_user){
+				assert.notOk(existing_user);
 				done();
 			});
 		});

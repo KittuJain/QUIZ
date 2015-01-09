@@ -1,3 +1,9 @@
 extends layout
-
+block vars
+	- var title = "Home"
+block title
+	title #{title}
 block content
+	h1 #{title}
+	| Click here to 
+	a(href="/login") Login
