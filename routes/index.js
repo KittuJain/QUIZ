@@ -26,8 +26,11 @@ var registerUser = function(req,res,next){
 	quiz.addUser(new_user,function(err,user){
 		req.session.userEmail = user.email;
 		if(!err)
-			res.render('dashboard',{user:user});		
+			res.redirect('/dashboard');		
 	});
 };
+router.get('/dashboard',function(req,res){
+	res.render('dashboard');
+})
 
 module.exports = router;
