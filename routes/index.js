@@ -16,7 +16,7 @@ router.get('/login', function(req, res) {
 	res.render('login');
 });
 
-router.get('/quizzes',requireLogin function(req, res) {
+router.get('/quizzes',requireLogin, function(req, res) {
 	console.log(req.session.userEmail)
 	quiz.getTopics(req.session.userEmail, function(err, topics) {
 		var quizzes = {};
