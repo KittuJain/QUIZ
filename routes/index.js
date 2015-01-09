@@ -41,8 +41,23 @@ var registerUser = function(req, res, next) {
 			res.redirect('/dashboard');
 	});
 };
+
+var loginUser = function(req,res,next){
+	var user = {"email":req.body.email,"password":req.body.password};
+	quiz.getUser(user.email,function(err,existingUser){
+		if(!existingUser){
+			res.render('login',{error:'Incorrect E-mail Id or password'});
+		}
+		else{
+			var isValidPassword = bcrypt.compareSync(user.password,existingUser.password);
+			(isValidPassword) ? res.redirect('/dashboard') : 
+			res.render('login',{error:'Incorrect E-mail Id or password'});
+		}
+	});
+};
+
 router.get('/dashboard', function(req, res) {
 	res.render('dashboard');
-})
+});
 
 module.exports = router;
