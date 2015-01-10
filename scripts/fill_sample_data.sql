@@ -7,3 +7,4 @@ insert into topics (name,duration,useremail,questions,status) values ("GK","00:3
 insert into topics (name,duration,useremail,questions,status) values ("SS","00:20:00","pqr@email.com",'[{"q":"what is national food","a":"rice"}]',"open");
 insert into topics (name,duration,useremail,questions,status) values ("Language","00:15:00","pqr@email.com",'[{"q":"what are different languages speak in India","a":["hindi","english"]}]',"open");
 insert into topics (name,duration,useremail,questions,status) values ("India","00:15:00","pqr@email.com",'[{"q":"India belongs to which continent?","a":["asia"]}]',"closed");
+insert into participate(useremail, quizId) values ("abc@email.com",2);
