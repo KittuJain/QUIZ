@@ -74,7 +74,10 @@ var loginUser = function(req,res,next){
 };
 
 router.get('/dashboard', function(req, res) {
-	res.render('dashboard',{email:req.session.userEmail});
+	if(req.session.userEmail)
+		res.render('dashboard',{email:req.session.userEmail});
+	else
+		res.redirect('login');
 });
 
 module.exports = router;
