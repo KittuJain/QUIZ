@@ -24,7 +24,7 @@ block content
 				each quiz in quizzes
 					tr
 						td 
-							button(type='submit' onclick="/quiz/#{quiz.id}") Join
+							button(type='submit' onclick="window.location.href='/join/#{quiz.id}'") Join
 						td 
 							center #{quiz.name}
 						td #{quiz.duration}

@@ -42,14 +42,22 @@ describe('game', function() {
 						master:"abc@email.com",
 						questions:[
 						{q:'who is PM',a:'modi'}
-						]
+						],
+						player:{email:"abc@gmail.com"}
+
 					};
-			var userEmail ="abc@gmail.com";
 			var expectedGame = {
-				gameData:Game,
-				player:"abc@gmail.com"
+						id:1,
+						name:"GK",
+						duration:"00:30:00",
+						master:"abc@email.com",
+						questions:[
+						{q:'who is PM',a:'modi'}
+						],
+						player:{email:"abc@gmail.com",attemted:0,commited:[],left:['0']}
 			};
-			var currentGame = gameLib.start(Game,userEmail);
+			expectedGame.__proto__=gameProto;
+			var currentGame = gameLib.start(Game);
 			assert.deepEqual(expectedGame,currentGame);
 		});
 	});

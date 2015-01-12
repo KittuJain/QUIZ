@@ -1,6 +1,8 @@
 var express = require('express');
 var lib = require('../lib/quiz.js');
 var quiz = lib.init('data/quiz.db');
+var getDb = require('../lib/DBLib.js').create_db('data/quiz.db');
+var gameLib = require('../lib/game.js').lib;
 var router = express.Router();
 var bcrypt = require("bcryptjs");
 
@@ -80,4 +82,21 @@ router.get('/dashboard', function(req, res) {
 		res.redirect('login');
 });
 
+router.get('/join/:id',requireLogin, function(req, res) {
+	var db = getDb();
+	var quizId = req.params.id;
+	var useremail = req.session.userEmail;
+	gameLib.join(useremail,quizId,db,function(err){
+		res.redirect("/quiz/"+quizId);
+	})
+});
+router.get('/quiz/:id', requireLogin, function(req, res) {
+	var db = getDb();
+	var quizId = req.params.id;
+	gameLib.load(quizId,db,function(err,gameData){
+		var game = gameLib.start(gameData);
+		var question1 = game.getQuestion();
+		res.render('quiz',{question:question1.q});
+	})
+});
 module.exports = router;
