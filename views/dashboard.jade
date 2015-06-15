@@ -1,13 +1,7 @@
 extends layout
 block vars
-	- var title = "Dashboard"
-block title
-	title #{title}
+    - var title = "Dashboard"
 block content
-	center
-		h1 #{title}
-	p(align='right') #{email}
-	hr
-	div(class='options')
-		a(href="/quizzes") Join Existing
-	div
+    - var navigations = [{name: "dashboard", link: "/dashboard"}]
+    include ./header/header.jade
+    include ./dashboard-content/dashboard-content.jade

@@ -1,25 +1,7 @@
 extends layout
 block vars
-	- var title = "Login"
-block title
-	title #{title}
+    - var title = "Login"
 block content
-	h1 #{title}
-	form(method="post")
-		| E-mail:
-		input(type="email" name = "email" required)
-		br
-		br
-		| Password:
-		input(type="password" name="password" required)
-		br
-		input(type="checkbox" name = "exist")
-		| I am already a user
-		br
-		input(type="submit" value="Login")
-	if(error)
-		#errorMessage
-			| #{error}
-
-
-	
+    - var navigations = []
+    include ./header/header.jade
+    include ./login/login.jade

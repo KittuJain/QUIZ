@@ -1,8 +1,9 @@
 doctype html
 block vars
 html
-	head
-		block title
-		link(rel='stylesheet', href='/stylesheets/style.css')
-	body
-	block content
+    head
+        block title
+        script(src="/scripts/jquery/jquery.min.js")
+        block headerIncludes
+    body
+        block content

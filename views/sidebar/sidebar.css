@@ -1,0 +1,21 @@
+.sidebar-wrapper {
+    height: 250px;
+    width: 300px;
+    border-right: 2px solid #2F6FAD;
+    display: inline;
+    float: left;
+}
+
+.sidebar-list {
+    font-size: 20px;
+}
+
+.sidebar-list li {
+    list-style: none;
+    float: right;
+    padding-right: 20px;
+}
+
+.sidebar-list a {
+    text-decoration: none;
+}

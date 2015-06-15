@@ -1,9 +1,8 @@
 extends layout
 block vars
-	- var title = "Home"
-block title
-	title #{title}
+    - var title = "Home"
+
 block content
-	h1 #{title}
-	| Click here to 
-	a(href="/login") Login
+    - var navigations = [{name: "home", link: "/"}, {name: "login", link: "/login"}]
+    include ./header/header.jade
+    include ./body/index-body/index-body.jade

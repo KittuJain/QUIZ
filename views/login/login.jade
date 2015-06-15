@@ -1,0 +1,18 @@
+block includes
+   link(rel="stylesheet", href="/login/login.css")
+
+
+div(class="login-wrapper")
+    header(class="login-title") Login
+    form(method="post")
+        input(required, type="email", class="text-input", name="email", placeholder="Enter your email id")
+        input(required, type="password", class="text-input", name="password", placeholder="Enter your password")
+        br
+        input(type="checkbox",class="checkbox", name = "exist")
+        | I am already a user
+        br
+        input(raised, type="submit", class="submit-button", placeholder="Enter your password", value="JOIN")
+
+    if(error)
+        #errorMessage
+            | #{error}
