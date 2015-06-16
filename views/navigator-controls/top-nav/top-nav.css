@@ -43,3 +43,9 @@
     float: right;
     padding-right: 20px;
 }
+
+.flex {
+    -ms-flex: 2;
+    -webkit-flex: 2;
+    flex: 1;
+}
