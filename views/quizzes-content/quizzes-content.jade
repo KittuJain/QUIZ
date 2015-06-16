@@ -1,0 +1,17 @@
+block includes
+    link(rel="stylesheet", href="/quizzes-content/quizzes-content.css")
+
+
+div(class="quizzes-content-wrapper")
+    div(class="header")
+        div(class="cell")
+            p Name of the quiz
+        div(class="cell")
+            p Duration
+
+    for quiz in quizzes
+        div(class="row")
+            div(class="cell")
+                p #{quiz.name}
+            div(class="cell")
+                p #{quiz.duration}

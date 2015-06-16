@@ -2,3 +2,5 @@ nav(class="navigation")
     for navigation in navigations
         a(href="#{navigation.link}") #{navigation.name}
 
+    if pageName
+        div(class="page-title") Welcome to #{pageName}
