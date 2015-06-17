@@ -5,7 +5,7 @@ var getDb = require('../lib/DBLib.js').create_db('data/quiz.db');
 var gameLib = require('../lib/game.js').lib;
 var router = express.Router();
 var users = require("./users").users;
-//var display = require("./display").display;
+var display = require("./display").display;
 
 router.get('/', function(request, response) {
 	response.render('index');
@@ -15,16 +15,12 @@ router.get('/login', function(request, response) {
 	users.get.login(request, response);
 });
 
-router.get('/quizzes', function(request, response) {
-    quiz.getTopics(request.session.userEmail, function(err, topics) {
-        var quizzes = {email:request.session.userEmail};
-        topics.length == 0 ? quizzes.quizzes = false : quizzes.quizzes = topics;
-        response.render('quizzes', quizzes);
-    });
-});
-
 router.post('/login', function(request, response) {
     users.post.login(request, response);
+});
+
+router.get('/quizzes', function(request, response) {
+    display.get.showQuizList(request, response);
 });
 
 router.get('/dashboard', function(request, response) {
