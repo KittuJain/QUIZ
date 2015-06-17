@@ -24,10 +24,7 @@ router.get('/quizzes', function(request, response) {
 });
 
 router.get('/dashboard', function(request, response) {
-	if(request.session.userEmail)
-		response.render('dashboard',{email:request.session.userEmail});
-	else
-		response.redirect('login');
+    display.get.dashboard(request, response);
 });
 
 router.get('/join/:id', function(request, response) {

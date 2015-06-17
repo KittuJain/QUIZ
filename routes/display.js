@@ -6,13 +6,22 @@ var _get = {};
 var _post = {};
 
 _get.showQuizList = function(request, response) {
-    quiz.getTopics(request.session.userEmail, function(err, topics) {
-        var quizzes = {email:request.session.userEmail};
-        topics.length == 0 ? quizzes.quizzes = false : quizzes.quizzes = topics;
+    var userEmail = request.session.userEmail;
+
+    quiz.getTopics(userEmail, function(err, topics) {
+        var quizzes = {email: userEmail, quizzes: topics};
         response.render('quizzes', quizzes);
     });
 };
 
+_get.dashboard = function (request, response) {
+    var userEmail = request.session.userEmail;
+
+    if(userEmail)
+        response.render('dashboard',{email:userEmail});
+    else
+        response.redirect('login');
+};
 
 _display.get = _get;
 _display.post = _post;
