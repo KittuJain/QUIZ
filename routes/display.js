@@ -19,8 +19,6 @@ _get.dashboard = function (request, response) {
 
     if(userEmail)
         response.render('dashboard',{email:userEmail});
-    else
-        response.redirect('login');
 };
 
 _display.get = _get;
