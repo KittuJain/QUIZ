@@ -11,7 +11,9 @@ div(class="login-wrapper")
         input(type="checkbox",class="checkbox", name = "exist")
         | I am already a user
         br
-        input(raised, type="submit", class="submit-button", placeholder="Enter your password", value="JOIN")
+        - var submitValue = "JOIN"
+
+        include ../submit-button/submit-button.jade
 
     if(error)
         #errorMessage

@@ -14,7 +14,7 @@ var runAllQueries = function(){
 
 	[	
 		"create table login(useremail text primary key, password text not null);",
-		"create table topics(id integer primary key autoincrement, name text, duration text,questions text,status text,useremail text ,foreign key(useremail) references login(useremail));",
+		"create table topics(id integer primary key autoincrement, name text, duration integer, requiredParticipant integer, questionLocation text, status text, useremail text ,foreign key(useremail) references login(useremail));",
 		"create table participate(useremail text ,quizId integer,foreign key(useremail) references login(useremail),foreign key(quizId) references topics(id));"
 	].forEach(runQuery)	;
 };

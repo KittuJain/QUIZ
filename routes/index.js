@@ -6,6 +6,7 @@ var gameLib = require('../lib/game.js').lib;
 var router = express.Router();
 var users = require("./users").users;
 var display = require("./display").display;
+var action = require("./action").action;
 
 router.get('/', function(request, response) {
 	response.render('index');
@@ -27,6 +28,14 @@ router.get('/dashboard', function(request, response) {
     display.get.dashboard(request, response);
 });
 
+router.get("/createQuiz", function(request, response) {
+    action.get.createQuiz(request, response);
+});
+
+router.post("/createQuiz", function(request, response) {
+    action.post.createQuiz(request, response);
+});
+
 router.get('/join/:id', function(request, response) {
 	var db = getDb();
 	var quizId = request.params.id;
@@ -35,6 +44,7 @@ router.get('/join/:id', function(request, response) {
 		response.redirect("/quiz/"+quizId);
 	})
 });
+
 router.get('/quiz/:id', function(request, response) {
 	var db = getDb();
 	var quizId = request.params.id;
@@ -44,4 +54,5 @@ router.get('/quiz/:id', function(request, response) {
 		response.render('quiz',{question:question1.q});
 	})
 });
+
 module.exports = router;

@@ -3,8 +3,8 @@ PRAGMA foreign_keys = "ON";
 insert into login(useremail, password) values ("abc@email.com","abc");
 insert into login(useremail, password) values ("pqr@email.com","pqr");
 
-insert into topics (name,duration,useremail,questions,status) values ("GK","00:30:00","abc@email.com",'[{"q":"who is PM","a":"modi"}]',"open");
-insert into topics (name,duration,useremail,questions,status) values ("SS","00:20:00","pqr@email.com",'[{"q":"what is national food","a":"rice"}]',"open");
-insert into topics (name,duration,useremail,questions,status) values ("Language","00:15:00","pqr@email.com",'[{"q":"what are different languages speak in India","a":["hindi","english"]}]',"open");
-insert into topics (name,duration,useremail,questions,status) values ("India","00:15:00","pqr@email.com",'[{"q":"India belongs to which continent?","a":["asia"]}]',"closed");
+insert into topics (name,duration,useremail,requiredParticipant, questionLocation, status) values ("GK",30,"abc@email.com", 10, "quiz.json","open");
+insert into topics (name,duration,useremail,requiredParticipant, questionLocation, status) values ("SS",20,"pqr@email.com",10, "quiz.json","open");
+insert into topics (name,duration,useremail,requiredParticipant, questionLocation, status) values ("Language",15,"pqr@email.com",10, "quiz.json","open");
+insert into topics (name,duration,useremail,requiredParticipant, questionLocation, status) values ("India",15,"pqr@email.com",10, "quiz.json","closed");
 insert into participate(useremail, quizId) values ("abc@email.com",2);

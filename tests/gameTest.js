@@ -13,17 +13,16 @@ describe('game', function() {
 	 });
 	afterEach(function(){
 		db.close();
-	})
+	});
 	describe('#load',function()	{
 		it('it loads the game from database and creats game object ',function(done){
 			var expectedGame = {
 								id:2,
 								name:"SS",
-								duration:"00:20:00",
+								duration:10,
 								master:"pqr@email.com",
-								questions:[
-								{"q":"what is national food","a":"rice"}
-								],
+								questionLocation: "quiz.json",
+								requiredParticipant: 10,
 								player:{email:"abc@email.com"}
 							};
 			gameLib.load(2,db,function(err,game){
