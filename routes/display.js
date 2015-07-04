@@ -7,6 +7,7 @@ var _post = {};
 var questions;
 var withAnswer;
 var paperId;
+var attempt;
 
 _get.showQuizList = function(request, response) {
     var userEmail = request.session.userEmail;
@@ -23,6 +24,7 @@ _get.showQuizList = function(request, response) {
 };
 
 _get.goToFirstQuestion = function (request, response) {
+    attempt = 0;
     paperId = request.params.id;
     var quizPath = "../resources/" + require("../resources/quizzes.json")[paperId].location;
     questions = formatter(require(quizPath));
@@ -44,6 +46,11 @@ _get.showQuestion = function(request, response) {
 };
 
 _get.reportCard = function(request, response) {
+
+    if(attempt != questions.length){
+        response.redirect("/unavailable");
+    }
+
     var numberOfCurrectAnswer = questions.filter( function(question) {
        return question.isCorrect == true
     }).length;
@@ -61,6 +68,7 @@ _get.reportCard = function(request, response) {
 };
 
 _post.answerQuestion = function(request, response) {
+    attempt++;
     var currentQuestionId = parseInt(request.params.id);
     var question = withAnswer[currentQuestionId];
     questions[currentQuestionId - 1].isCorrect = (question.answer == request.body.option);
