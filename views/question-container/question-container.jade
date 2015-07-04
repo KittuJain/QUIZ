@@ -1,0 +1,13 @@
+link(rel="stylesheet", href="/question-container/question-container.css")
+
+div(class="question-container-wrapper")
+    div(class="question-container") #{details.question}
+    div(class="options-container-wrapper")
+        form(action="/answer/#{details.id}", method="post")
+            for option, index in details.options
+                div(class="options-container")
+                    input(type="radio", class="radio-button" name="option", value="#{option}")
+                    | #{option}
+            div(class="commit-button")
+                - var submitValue = "COMMIT"
+                include ../submit-button/submit-button.jade

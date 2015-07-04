@@ -4,6 +4,9 @@ var quiz = lib.init("data/quiz.db");
 var _display = {};
 var _get = {};
 var _post = {};
+var questions;
+var withAnswer;
+var paperId;
 
 _get.showQuizList = function(request, response) {
     var userEmail = request.session.userEmail;
@@ -17,6 +20,34 @@ _get.showQuizList = function(request, response) {
 
     var quizDetails = { quizList: quizList,  email: userEmail};
     response.render('quizzes', quizDetails);
+};
+
+_get.goToFirstQuestion = function (request, response) {
+    paperId = request.params.id;
+    var quizPath = "../resources/" + require("../resources/quizzes.json")[paperId].location;
+    questions = formatter(require(quizPath));
+    response.redirect("/quiz/" + paperId + "/1")
+};
+
+var formatter = function(questions) {
+  withAnswer = questions;
+  return Object.keys(questions).map(function (questionKey) {
+      return {id: questionKey, question: questions[questionKey].question, options: questions[questionKey].options, isCorrect: "false"}
+  });
+};
+
+_get.showQuestion = function(request, response) {
+    var quizId = request.params.qId;
+    var content = { details: questions[quizId - 1], email: request.session.userEmail};
+
+    response.render("serve-question/serve-question", content);
+};
+
+_post.answerQuestion = function(request, response) {
+    var currentQuestionId = parseInt(request.params.id);
+    var question = withAnswer[currentQuestionId];
+    questions[currentQuestionId - 1].isCorrect = (question.answer == request.body.option);
+    response.redirect("/quiz/" + paperId + "/" + (currentQuestionId + 1));
 };
 
 _display.get = _get;

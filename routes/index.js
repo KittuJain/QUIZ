@@ -45,14 +45,18 @@ router.get('/join/:id', function(request, response) {
 	})
 });
 
-router.get('/quiz/:id', function(request, response) {
-	var db = getDb();
-	var quizId = request.params.id;
-	gameLib.load(quizId,db,function(err,gameData){
-		var game = gameLib.start(gameData);
-		var question1 = game.getQuestion();
-		response.render('quiz',{question:question1.q});
-	})
+router.post('/answer/:id', function(request, response) {
+    display.post.answerQuestion(request, response);
 });
+
+router.get('/quiz/:id', function(request, response) {
+    display.get.goToFirstQuestion(request, response);
+});
+
+router.get('/quiz/:id/:qId', function(request, response) {
+    display.get.showQuestion(request, response);
+});
+
+
 
 module.exports = router;
