@@ -25,7 +25,7 @@ router.get('/quizzes', function(request, response) {
 });
 
 router.get('/dashboard', function(request, response) {
-    display.get.dashboard(request, response);
+    display.get.showQuizList(request, response);
 });
 
 router.get("/createQuiz", function(request, response) {

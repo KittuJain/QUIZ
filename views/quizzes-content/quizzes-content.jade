@@ -9,9 +9,9 @@ div(class="quizzes-content-wrapper")
         div(class="cell")
             p Duration
 
-    for quiz in quizzes
+    for quiz in quizList
         div(class="row")
             div(class="cell")
-                p #{quiz.name}
+                a(href="quiz/#{quiz.index}") #{quiz.name}
             div(class="cell")
-                p #{quiz.duration}
+                p #{quiz.totalQuestions}

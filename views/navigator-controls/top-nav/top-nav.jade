@@ -2,6 +2,6 @@ nav(class="navigation")
     for navigation in navigations
         a(href="#{navigation.link}") #{navigation.name}
 
-    if pageName
+    if userName
         span(class="flex")
-        div(class="page-title") Welcome to #{pageName}
+        div(class="page-title") Welcome #{userName}

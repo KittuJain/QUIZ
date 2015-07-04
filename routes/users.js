@@ -42,7 +42,7 @@ var registerUser = function(request, response) {
 
         if (!err){
             request.session.userEmail = user.useremail;
-            response.redirect('/dashboard');
+            response.redirect('/quizzes');
         }else{
             response.render('login',{error:"Server Error..."});
         }
@@ -59,7 +59,7 @@ var loginUser = function(request, response){
             var isValidPassword = bcrypt.compareSync(user.password,existingUser.password);
             if(isValidPassword){
                 request.session.userEmail = user.email;
-                response.redirect('/dashboard')
+                response.redirect('/dashboard');
             }
             else
                 response.render('login',{error:'Incorrect E-mail Id or password'});

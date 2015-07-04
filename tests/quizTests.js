@@ -53,11 +53,11 @@ describe('quiz', function() {
 			var expected = [{
 				id: 2,
 				name: 'SS',
-				duration: '00:20:00'
+				duration: 20
 			}, {
 				id: 3,
 				name: 'Language',
-				duration: '00:15:00'
+				duration: 15
 			}];
 			quiz.getTopics(userEmail, function(err, topics) {
 				assert.notOk(err);

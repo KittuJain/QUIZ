@@ -7,18 +7,16 @@ var _post = {};
 
 _get.showQuizList = function(request, response) {
     var userEmail = request.session.userEmail;
+    var quizzes = require("../resources/quizzes.json");
 
-    quiz.getTopics(userEmail, function(err, topics) {
-        var quizzes = {email: userEmail, quizzes: topics};
-        response.render('quizzes', quizzes);
+    var quizList = Object.keys(quizzes).map(function (key) {
+        var questionPath = "../resources/" + quizzes[key].location;
+        var questionIndexes = Object.keys(require(questionPath))
+        return { index: key, name: quizzes[key].name, totalQuestions: questionIndexes.length };
     });
-};
 
-_get.dashboard = function (request, response) {
-    var userEmail = request.session.userEmail;
-
-    if(userEmail)
-        response.render('dashboard',{email:userEmail});
+    var quizDetails = { quizList: quizList,  email: userEmail};
+    response.render('quizzes', quizDetails);
 };
 
 _display.get = _get;
