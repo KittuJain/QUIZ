@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({secret:"secret hai bhai"}));
 app.use(express.static(path.join(__dirname, 'views')));
+app.enable('verbose errors');
 
 //app.use(express.static(path.join(__dirname, 'public')));
 
@@ -39,9 +40,10 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
         res.render('error', {
-            message: "Sorry! Unavailable Request",
-            email: request.session.userEmail
+            message: err.message,
+            error: err
         });
     });
 }
@@ -49,18 +51,18 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
     res.render('error', {
-        message: "Sorry! Unavailable Request",
-        email: req.session.userEmail
+        message: err.message,
+        error: {}
     });
 });
 
-app.get("/unavailable", function(req, res) {
-
-    res.render('error', {
-        message: "Sorry! Unavailable Request",
-        email: request.session.userEmail
-    });
+app.get("/500", function(request, response){
+    response.render("error", {status: 500});
+});
+app.get("/404", function(request, response){
+    response.render("error");
 });
 
 

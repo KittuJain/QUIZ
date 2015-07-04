@@ -48,8 +48,10 @@ _get.showQuestion = function(request, response) {
 _get.reportCard = function(request, response) {
 
     if(attempt != questions.length){
-        response.redirect("/unavailable");
+        response.redirect("/500");
+        return;
     }
+
 
     var numberOfCurrectAnswer = questions.filter( function(question) {
        return question.isCorrect == true

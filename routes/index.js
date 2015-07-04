@@ -8,6 +8,10 @@ var users = require("./users").users;
 var display = require("./display").display;
 var action = require("./action").action;
 
+var requireLogin = function(request, response, next){
+    request.session.userEmail ? next(): response.redirect('/login');
+};
+
 router.get('/', function(request, response) {
 	response.render('index');
 });
@@ -24,7 +28,7 @@ router.get('/quizzes', function(request, response) {
     display.get.showQuizList(request, response);
 });
 
-router.get('/dashboard', function(request, response) {
+router.get('/dashboard', requireLogin, function(request, response) {
     display.get.showQuizList(request, response);
 });
 
@@ -45,19 +49,19 @@ router.get('/join/:id', function(request, response) {
 	})
 });
 
-router.post('/answer/:id', function(request, response) {
+router.post('/answer/:id', requireLogin, function(request, response) {
     display.post.answerQuestion(request, response);
 });
 
-router.get('/quiz/:id', function(request, response) {
+router.get('/quiz/:id', requireLogin, function(request, response) {
     display.get.goToFirstQuestion(request, response);
 });
 
-router.get('/quiz/:id/:qId', function(request, response) {
+router.get('/quiz/:id/:qId', requireLogin, function(request, response) {
     display.get.showQuestion(request, response);
 });
 
-router.get('/report/:id', function(request, response) {
+router.get('/report/:id', requireLogin, function(request, response) {
     display.get.reportCard(request, response);
 });
 
