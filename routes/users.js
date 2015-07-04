@@ -14,6 +14,11 @@ var requireLogin = function(request, response){
     request.session.userEmail ? next(): response.redirect('/login');
 };
 
+_get.logout = function(request, response) {
+    request.session.destroy();
+    response.redirect('/login');
+};
+
 _get.login = function(request, response) {
     response.render("login");
 };
@@ -66,6 +71,7 @@ var loginUser = function(request, response){
         }
     });
 };
+
 
 users.get = _get;
 users.post = _post;

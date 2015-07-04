@@ -24,6 +24,8 @@ router.post('/login', function(request, response) {
     users.post.login(request, response);
 });
 
+router.get("/logout", users.get.logout);
+
 router.get('/quizzes', function(request, response) {
     display.get.showQuizList(request, response);
 });

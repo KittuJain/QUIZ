@@ -4,7 +4,7 @@ block vars
 block title
     title #{title}
 block content
-    - var navigations = [{name: "dashboard", link: "/dashboard"}]
+    - var navigations = [{name: "dashboard", link: "/dashboard"}, {name: "logout", link: "/logout"}]
     - var userName = email
     include ./header/header.jade
     include ./quizzes-content/quizzes-content.jade
