@@ -43,12 +43,34 @@ _get.showQuestion = function(request, response) {
     response.render("serve-question/serve-question", content);
 };
 
+_get.reportCard = function(request, response) {
+    var numberOfCurrectAnswer = questions.filter( function(question) {
+       return question.isCorrect == true
+    }).length;
+
+    var report = {
+        correct: numberOfCurrectAnswer,
+        total: questions.length,
+        quizName: require("../resources/quizzes.json")[paperId].name,
+        email: request.session.userEmail
+    };
+
+    questions = withAnswer = paperId = undefined;
+
+    response.render("report/report", report);
+};
+
 _post.answerQuestion = function(request, response) {
     var currentQuestionId = parseInt(request.params.id);
     var question = withAnswer[currentQuestionId];
     questions[currentQuestionId - 1].isCorrect = (question.answer == request.body.option);
+
+    if (currentQuestionId == questions.length)
+        return response.redirect("/report/" + paperId);
+
     response.redirect("/quiz/" + paperId + "/" + (currentQuestionId + 1));
 };
+
 
 _display.get = _get;
 _display.post = _post;

@@ -57,6 +57,8 @@ router.get('/quiz/:id/:qId', function(request, response) {
     display.get.showQuestion(request, response);
 });
 
-
+router.get('/report/:id', function(request, response) {
+    display.get.reportCard(request, response);
+});
 
 module.exports = router;
