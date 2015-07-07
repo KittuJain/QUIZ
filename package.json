@@ -6,7 +6,8 @@
   "scripts": {
     "test": "sh scripts/resetEnv.sh && sh scripts/deploy.sh && mocha tests",
     "reset":"sh scripts/resetEnv.sh",
-    "setup":"npm run reset && sh scripts/deploy.sh"
+    "setup":"npm run reset && sh scripts/deploy.sh",
+    "start": "node bin/www"
   },
   "repository": {
     "type": "git",
