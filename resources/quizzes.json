@@ -1,5 +1,8 @@
 {
   "1": {
-    "name": "quiz1", "location": "questions/Quiz1"
+    "name": "quiz1", "location": "questions/General_Knowledge1"
+  },
+  "2": {
+    "name": "quiz1", "location": "questions/General_Knowledge2"
   }
 }
