@@ -5,9 +5,9 @@ div(class="question-container-wrapper")
     div(class="options-container-wrapper")
         form(action="/answer/#{details.id}", method="post")
             for option, index in details.options
-                div(class="options-container")
-                    input(type="radio", class="radio-button" name="option", value="#{option}")
-                    | #{option}
+                label(class="options-container", for="radio_#{index}")
+                    input(type="radio", name="option", value="#{option}", id="radio_#{index}")
+                    span(class="answer-span", title="#{option}") #{option}
             div(class="commit-button")
                 - var submitValue = "COMMIT"
                 include ../submit-button/submit-button.jade

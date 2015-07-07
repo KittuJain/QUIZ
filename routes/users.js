@@ -43,10 +43,9 @@ var registerUser = function(request, response) {
         "email": request.body.email,
         "password": password
     };
-    quiz.addUser(new_user, function(err, user) {
-
+    quiz.addUser(new_user, function(err) {
         if (!err){
-            request.session.userEmail = user.useremail;
+            request.session.userEmail = new_user.email;
             response.redirect('/quizzes');
         }else{
             response.render('login',{error:"Server Error..."});
