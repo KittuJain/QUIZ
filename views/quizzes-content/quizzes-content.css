@@ -24,6 +24,13 @@
     width: 300px;
 }
 
-.cell a {
+.row a {
     text-decoration: none;
+    color: black;
+    font-weight: 600;
+    height: 50px;
+    display: block;
+    font-size: 17px;
+    position: relative;
+    top: 12px;
 }

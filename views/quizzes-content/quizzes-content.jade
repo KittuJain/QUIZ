@@ -11,7 +11,6 @@ div(class="quizzes-content-wrapper")
 
     for quiz in quizList
         div(class="row")
-            div(class="cell")
-                a(href="quiz/#{quiz.index}") #{quiz.name}
-            div(class="cell")
-                p #{quiz.totalQuestions}
+            a(href="quiz/#{quiz.index}")
+                label(class="cell") #{quiz.name}
+                p(class="cell") #{quiz.totalQuestions}
