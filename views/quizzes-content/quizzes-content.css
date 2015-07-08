@@ -6,14 +6,16 @@
 }
 
 .header {
-    display: table-row;
     font-weight: bold;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
+    background-color: bisque;
 }
 .row {
-    display: table-row;
     text-align: center;
+    background-color: beige;
+    font-size: 17px;
+    margin-top: 20px;
 }
 .cell {
     display: table-cell;

@@ -5,6 +5,7 @@ block title
     title #{title}
 block content
     - var navigations = [{name: "dashboard", link: "/dashboard"}, {name: "logout", link: "/logout"}]
+    - var linkDestination = "/dashboard"
     - var userName = email
     include ./header/header.jade
     include ./quizzes-content/quizzes-content.jade
