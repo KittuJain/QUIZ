@@ -45,6 +45,17 @@ _get.showQuestion = function(request, response) {
     response.render("serve-question/serve-question", content);
 };
 
+var generateAnswerReport = function (givenQuestions) {
+    return givenQuestions.map(function(details){
+        return {
+            question: details.question,
+            isCorrect: details.isCorrect,
+            given: details.givenAnswer,
+            actual: withAnswer[details.id].answer
+        };
+    });
+};
+
 _get.reportCard = function(request, response) {
 
     if(attempt != questions.length){
@@ -52,6 +63,7 @@ _get.reportCard = function(request, response) {
         return;
     }
 
+    var allQuestionsReport = generateAnswerReport(questions);
 
     var numberOfCurrectAnswer = questions.filter( function(question) {
        return question.isCorrect == true
@@ -61,7 +73,8 @@ _get.reportCard = function(request, response) {
         correct: numberOfCurrectAnswer,
         total: questions.length,
         quizName: require("../resources/quizzes.json")[paperId].name,
-        email: request.session.userEmail
+        email: request.session.userEmail,
+        allQuestionReport: allQuestionsReport
     };
 
     questions = withAnswer = paperId = undefined;
@@ -71,9 +84,11 @@ _get.reportCard = function(request, response) {
 
 _post.answerQuestion = function(request, response) {
     attempt++;
+    var givenAnswer = request.body.option;
     var currentQuestionId = parseInt(request.params.id);
     var question = withAnswer[currentQuestionId];
-    questions[currentQuestionId - 1].isCorrect = (question.answer == request.body.option);
+    questions[currentQuestionId - 1].givenAnswer = givenAnswer;
+    questions[currentQuestionId - 1].isCorrect = (question.answer == givenAnswer);
 
     if (currentQuestionId == questions.length)
         return response.redirect("/report/" + paperId);

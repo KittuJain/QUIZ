@@ -1,0 +1,39 @@
+.performance-reporter-wrapper {
+    height: auto;
+}
+
+.report-row {
+    height: auto;
+    text-align: center;
+    background-color: beige;
+    font-size: 17px;
+    margin-top: 20px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom-color: #2F6FAD;
+}
+
+.report-question {
+    width: 300px;
+    display: inline;
+    float: left;
+}
+
+.report-given-answer {
+    width: 175px;
+    display: inline;
+    float: left;
+}
+
+.report-correct-answer {
+    color: #0B6121;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.underlined {
+
+}

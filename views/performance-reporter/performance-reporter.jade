@@ -1,0 +1,13 @@
+link(rel="stylesheet", href="/performance-reporter/performance-reporter.css")
+
+div(class="performance-reporter-wrapper")
+    for report in allQuestionReport
+        div(class="report-row")
+            div(class="report-question") #{report.question}
+
+            if report.isCorrect
+                div(class="report-given-answer") #{report.given}
+                div(class="report-correct-answer report-given-answer") #{report.actual}
+            else
+                div(class="report-given-answer error") #{report.given}
+                div(class="report-correct-answer report-given-answer") #{report.actual}
