@@ -3,7 +3,6 @@
 }
 
 .report-row {
-    height: auto;
     text-align: center;
     background-color: beige;
     font-size: 17px;
@@ -15,18 +14,20 @@
 }
 
 .report-question {
+    display: table-cell;
     width: 300px;
-    display: inline;
-    float: left;
+    padding: 8px;
+    font-size: 18px;
 }
 
 .report-given-answer {
+    display: table-cell;
     width: 175px;
-    display: inline;
-    float: left;
+    padding: 8px;
+    font-size: 18px;
 }
 
-.report-correct-answer {
+.success {
     color: #0B6121;
 }
 
@@ -34,6 +35,8 @@
     color: #ff0000;
 }
 
-.underlined {
 
+.reporter-header {
+    font-weight: bold;
+    background-color: #999999;
 }
