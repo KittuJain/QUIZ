@@ -1,8 +1,15 @@
-nav(class="navigation")
-    if navigations
-        for navigation in navigations
-            a(href="#{navigation.link}") #{navigation.name}
+link(rel="stylesheet", href="/navigator-controls/top-nav/top-nav.css")
+script(src="/navigator-controls/top-nav/top-nav.js")
 
+nav(class="navigation")
     if userName
         span(class="flex")
-        div(class="page-title") Welcome #{userName}
+        div(class="user-menu")
+            a(id="top-nav-label", class="page-title", href="#") Welcome #{userName}
+                span(class="arrow") &#9660;
+
+            ul(id="top-nav-dd", class="hide")
+                if navigations
+                    for navigation in navigations
+                        li
+                            a(href="#{navigation.link}") #{navigation.name}

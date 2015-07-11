@@ -49,3 +49,51 @@
     -webkit-flex: 2;
     flex: 1;
 }
+
+.user-menu {
+    height: 20px;
+    width: 350px;
+    float: right;
+}
+
+.user-menu a{
+    font-size: 16px;
+    color: whitesmoke;
+    font-family: monospace;
+    text-decoration: none;
+    border: 0 !important;
+}
+
+.user-menu a:hover{
+    color: white;
+}
+
+.user-menu > ul {
+    width: 160px;
+    float: right;
+    background-color: #2F6FAD;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.arrow {
+    font-size: 9px;
+    margin-right: 8px;
+    margin-left: 8px;
+    position: relative;
+    top: -1px;
+}
+
+.user-menu > ul > li > a {
+    padding: 5px 30px;
+    display: block;
+    text-align: center;
+}
+
+.user-menu > ul > li > a:hover {
+    color: #b94a48;
+}
+
+.hide {
+    display: none;
+}

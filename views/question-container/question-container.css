@@ -48,9 +48,11 @@
 }
 
 .answer-span {
-    align-text: center;
     padding: 5px;
     position: absolute;
     margin-top: 7px;
 }
 
+.hide {
+    display: none;
+}
