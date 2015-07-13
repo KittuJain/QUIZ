@@ -9,12 +9,11 @@ var withAnswer;
 var paperId;
 var attempt;
 
-_get.showQuizList = function(request, response) {
+_get.showQuizList = function(request, response, quizzes, path) {
     var userEmail = request.session.userEmail;
-    var quizzes = require("../resources/quizzes.json");
 
     var quizList = Object.keys(quizzes).map(function (key) {
-        var questionPath = "../resources/" + quizzes[key].location;
+        var questionPath = path + quizzes[key].location;
         var questionIndexes = Object.keys(require(questionPath))
         return { index: key, name: quizzes[key].name, totalQuestions: questionIndexes.length };
     });

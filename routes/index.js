@@ -27,10 +27,16 @@ router.post('/login', function(request, response) {
 router.get("/logout", users.get.logout);
 
 router.get('/quizzes', function(request, response) {
-    display.get.showQuizList(request, response);
+    var quizzes = require("../resources/quizzes.json");
+    var questionPath = "../resources/";
+
+    display.get.showQuizList(request, response, quizzes, questionPath);
 });
 
 router.get('/dashboard', requireLogin, function(request, response) {
+    var quizzes = require("../resources/quizzes.json");
+    var questionPath = "../resources/";
+
     display.get.showQuizList(request, response);
 });
 
