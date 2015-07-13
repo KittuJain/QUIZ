@@ -22,10 +22,10 @@ _get.showQuizList = function(request, response, quizzes, path) {
     response.render('quizzes', quizDetails);
 };
 
-_get.goToFirstQuestion = function (request, response) {
+_get.goToFirstQuestion = function (request, response, quizzes, root) {
     attempt = 0;
     paperId = request.params.id;
-    var quizPath = "../resources/" + require("../resources/quizzes.json")[paperId].location;
+    var quizPath = root + quizzes[paperId].location;
     questions = formatter(require(quizPath));
     response.redirect("/quiz/" + paperId + "/1")
 };
@@ -57,10 +57,7 @@ var generateAnswerReport = function (givenQuestions) {
 
 _get.reportCard = function(request, response) {
 
-    if(attempt != questions.length){
-        response.redirect("/500");
-        return;
-    }
+    if(attempt != questions.length) return response.redirect("/500");
 
     var allQuestionsReport = generateAnswerReport(questions);
 

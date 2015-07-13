@@ -62,7 +62,9 @@ router.post('/answer/:id', requireLogin, function(request, response) {
 });
 
 router.get('/quiz/:id', requireLogin, function(request, response) {
-    display.get.goToFirstQuestion(request, response);
+    var quizzes = require("../resources/quizzes.json");
+    var root = "../resources/";
+    display.get.goToFirstQuestion(request, response, quizzes, root);
 });
 
 router.get('/quiz/:id/:qId', requireLogin, function(request, response) {

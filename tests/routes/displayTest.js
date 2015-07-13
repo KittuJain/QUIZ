@@ -37,4 +37,46 @@ describe("Display", function() {
             display.get.showQuizList(request, response, quizzes, path);
         });
     });
+
+    describe("#goToFirstQuestion", function() {
+        it("should get first question for quiz 1", function() {
+            request.params = {id: "1"};
+            var quizzes = require("./data/quizzes");
+            var root = "../tests/routes/data/";
+
+            response.redirect = function(path) {
+                assert.deepEqual(path, "/quiz/1/1");
+            };
+
+            display.get.goToFirstQuestion(request, response, quizzes, root);
+        });
+    });
+
+    describe("#showQuestion", function() {
+        it("should give question for quiz 1", function() {
+            request.params = {qId: "1"};
+
+            response.render = function(pageName, content) {
+                var expected = {
+                    details: {
+                        id: "1",
+                        question: 'What is the largest Railway station in the world?',
+                        options:
+                            [ 'Grand Central Terminal',
+                                'Kharagpur Railway station',
+                                'Ghum Railway Station',
+                                'Gorakhpur Junction railway station'
+                            ],
+                        isCorrect: 'false'
+                    },
+                    email: "something@fortest"
+                };
+
+                assert.deepEqual(pageName, "serve-question/serve-question");
+                assert.deepEqual(content, expected);
+            };
+
+            display.get.showQuestion(request, response);
+        });
+    });
 });
