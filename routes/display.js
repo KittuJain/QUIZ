@@ -55,7 +55,7 @@ var generateAnswerReport = function (givenQuestions) {
     });
 };
 
-_get.reportCard = function(request, response) {
+_get.reportCard = function(request, response, quizzes) {
 
     if(attempt != questions.length) return response.redirect("/500");
 
@@ -68,7 +68,7 @@ _get.reportCard = function(request, response) {
     var report = {
         correct: numberOfCurrectAnswer,
         total: questions.length,
-        quizName: require("../resources/quizzes.json")[paperId].name,
+        quizName: quizzes[paperId].name,
         email: request.session.userEmail,
         allQuestionReport: allQuestionsReport
     };
@@ -80,9 +80,11 @@ _get.reportCard = function(request, response) {
 
 _post.answerQuestion = function(request, response) {
     attempt++;
+
     var givenAnswer = request.body.option;
     var currentQuestionId = parseInt(request.params.id);
     var question = withAnswer[currentQuestionId];
+
     questions[currentQuestionId - 1].givenAnswer = givenAnswer;
     questions[currentQuestionId - 1].isCorrect = (question.answer == givenAnswer);
 

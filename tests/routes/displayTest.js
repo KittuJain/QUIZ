@@ -96,22 +96,67 @@ describe("Display", function() {
 
             display.post.answerQuestion(request, response);
         });
+
+        it("should redirect to report page", function () {
+            request.params = {qId: "1", id: "2"};
+            request.body = {option:"Grand Central Terminal"};
+
+            response.redirect = function (path) {};
+
+            display.get.goToFirstQuestion(request, response, require("./data/quizzes"), "../tests/routes/data/");
+
+            display.post.answerQuestion(request, response);
+
+            response.redirect = function (path) {
+                assert.deepEqual(path, "/report/2");
+            };
+
+            display.post.answerQuestion(request, response);
+        });
     });
 
-    it("should redirect to report page", function () {
-        request.params = {qId: "1", id: "2"};
-        request.body = {options:"Grand Central Terminal"};
+    describe("#reportCard", function () {
+       it("should give the report of the game", function() {
+           request.params = {id: "2"};
+           request.body = {option:"Ultraviolet radiation"};
 
-        response.redirect = function (path) {};
+           response.redirect = function (path) {};
 
-        display.get.goToFirstQuestion(request, response, require("./data/quizzes"), "../tests/routes/data/");
+           display.get.goToFirstQuestion(request, response, require("./data/quizzes"), "../tests/routes/data/");
 
-        display.post.answerQuestion(request, response);
+           request.params = {id: "1"};
+           display.post.answerQuestion(request, response);
+           request.params = {id: "2"};
+           display.post.answerQuestion(request, response);
 
-        response.redirect = function (path) {
-            assert.deepEqual(path, "/report/2");
-        };
+           response.render = function (pageName, report) {
+               var expected =  {
+                   correct: 1,
+                   total: 2,
+                   quizName: 'General Knowledge 2',
+                   email: 'something@fortest',
+                   allQuestionReport:
+                       [
+                           {
+                               question: 'The ozone layer restricts - ',
+                               isCorrect: true,
+                               given: 'Ultraviolet radiation',
+                               actual: 'Ultraviolet radiation'
+                            },
+                           {
+                               question: 'FRS stands for -',
+                               isCorrect: false,
+                               given: 'Ultraviolet radiation',
+                               actual: 'Fellow of Royal Society'
+                           }
+                       ]
+               };
 
-        display.post.answerQuestion(request, response);
+               assert.deepEqual(report, expected);
+               assert.deepEqual(pageName, "report/report");
+           };
+
+           display.get.reportCard(request, response, require("./data/quizzes"));
+       });
     });
 });

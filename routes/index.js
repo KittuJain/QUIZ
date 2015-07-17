@@ -72,7 +72,7 @@ router.get('/quiz/:id/:qId', requireLogin, function(request, response) {
 });
 
 router.get('/report/:id', requireLogin, function(request, response) {
-    display.get.reportCard(request, response);
+    display.get.reportCard(request, response, require("../resources/quizzes.json"));
 });
 
 module.exports = router;
