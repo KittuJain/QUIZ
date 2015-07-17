@@ -16,6 +16,7 @@ describe("Display", function() {
 
     afterEach(function(){
         request = null;
+        response = null;
     });
 
     describe("#showQuizList", function() {
@@ -25,7 +26,7 @@ describe("Display", function() {
             response.render = function(pageName, details) {
                 var expected = [
                     {index: "1", name: "General Knowledge 1", totalQuestions: 4},
-                    {index: "2", name: "General Knowledge 2", totalQuestions: 4}
+                    {index: "2", name: "General Knowledge 2", totalQuestions: 2}
                 ];
 
                 assert.deepEqual(pageName, "quizzes");
@@ -78,5 +79,39 @@ describe("Display", function() {
 
             display.get.showQuestion(request, response);
         });
+    });
+
+    describe("#answerQuestion", function() {
+        it("should give second question if first question is been answered", function () {
+            request.params = {qId: "1", id: "1"};
+            request.body = {options:"Grand Central Terminal"};
+
+            response.redirect = function (path) {};
+
+            display.get.goToFirstQuestion(request, response, require("./data/quizzes"), "../tests/routes/data/");
+
+            response.redirect = function (path) {
+                assert.deepEqual(path, "/quiz/1/2");
+            };
+
+            display.post.answerQuestion(request, response);
+        });
+    });
+
+    it("should redirect to report page", function () {
+        request.params = {qId: "1", id: "2"};
+        request.body = {options:"Grand Central Terminal"};
+
+        response.redirect = function (path) {};
+
+        display.get.goToFirstQuestion(request, response, require("./data/quizzes"), "../tests/routes/data/");
+
+        display.post.answerQuestion(request, response);
+
+        response.redirect = function (path) {
+            assert.deepEqual(path, "/report/2");
+        };
+
+        display.post.answerQuestion(request, response);
     });
 });
