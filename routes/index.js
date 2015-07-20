@@ -37,7 +37,8 @@ router.get('/dashboard', requireLogin, function(request, response) {
     var quizzes = require("../resources/quizzes.json");
     var questionPath = "../resources/";
 
-    display.get.showQuizList(request, response);
+
+    display.get.showQuizList(request, response, quizzes, questionPath);
 });
 
 router.get("/createQuiz", function(request, response) {
