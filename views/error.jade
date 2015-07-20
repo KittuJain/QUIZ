@@ -3,8 +3,13 @@ extends layout
 block vars
   - var title = "Error Display"
 block content
-  - var navigations = [{name: "logout", link: "/logout"}]
+  if email
+      - var navigations = [{name: "logout", link: "/logout"}]
+      - var linkDestination = "/dashboard"
+  else
+      - var linkDestination = "/"
   - var userName = email
-  - var linkDestination = "/dashboard"
+
+
   include header/header.jade
   include error500/error500.jade

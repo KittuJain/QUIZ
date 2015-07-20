@@ -86,7 +86,13 @@ app.get("/500", function(request, response){
     response.render("error", {status: 500, email: user});
 });
 app.get("/404", function(request, response){
-    response.render("error");
+    var user;
+
+    if(request.session){
+        user = request.session.userEmail
+    }
+
+    response.render("error", {status: 500, email: user});
 });
 
 
