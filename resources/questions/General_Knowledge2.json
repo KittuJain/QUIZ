@@ -48,5 +48,213 @@
     ],
 
     "answer": "Rameshwaram"
+  },
+
+  "5": {
+    "question": "Who acts as the President of India when neither the President nor the Vice President is avaliable?",
+
+    "options": [
+      "Auditor General of India",
+      "Speaker of Lok Sabha",
+      "Chief Justice of India",
+      "Senior most Governor of a state"
+    ],
+
+    "answer": "Chief Justice of India"
+  },
+
+  "6": {
+    "question": "Anita Sood is associated with which of the following games/sport?",
+
+    "options": [
+      "Hockey",
+      "Swimming",
+      "Table Tennis",
+      "Badminton"
+    ],
+
+    "answer": "Swimming"
+  },
+
+  "7": {
+    "question": "Where was the First University in India founded at?",
+
+    "options": [
+      "Bombay",
+      "Chennai",
+      "Calcutta",
+      "Delhi"
+    ],
+
+    "answer": "Calcutta"
+  },
+
+  "8": {
+    "question": "Who is the first non–indian to receive the Bharat Ratna?",
+
+    "options": [
+      "Martin Luther King",
+      "Mother Terasa",
+      "Khan Abdul Ghaffar Khan",
+      "Aubin Mehta"
+    ],
+
+    "answer": "Khan Abdul Ghaffar Khan"
+  },
+
+  "9": {
+    "question": "In which country is the committee which selects winners for nobel peace prize located?",
+
+    "options": [
+      "Sweden",
+      "Norway",
+      "Finland",
+      "Denmark"
+    ],
+
+    "answer": "Norway"
+  },
+
+  "10": {
+    "question": "In which of the following states, the Legislative Council has been abolished?",
+
+    "options": [
+      "Tamilnadu",
+      "West Bengal",
+      "Andhra Pradesh",
+      "All the above"
+    ],
+
+    "answer": "All the above"
+  },
+
+  "11": {
+    "question": "The Wimbledon Championship is played in?",
+
+    "options": [
+      "Sweden",
+      "U.K",
+      "Australia",
+      "France"
+    ],
+
+    "answer": "U.K"
+  },
+
+  "12": {
+    "question": "The decade 1981-1990 was observed as International Decade for?",
+
+    "options": [
+      "Peace",
+      "Drinking Water Supply and Sanitation",
+      "Women",
+      "Children"
+    ],
+
+    "answer": "Drinking Water Supply and Sanitation"
+  },
+
+  "13": {
+    "question": "Which player wins the FIFA Ballon d'Or for the year 2014",
+
+    "options": [
+      "Christianio Ronaldo",
+      "Messi",
+      "James Rodriguez",
+      "Manuel Neuer"
+    ],
+
+    "answer": "Christianio Ronaldo"
+  },
+
+  "14": {
+    "question": "Who is the chief guest of 2015 Republic Day?",
+
+    "options": [
+      "Vladmir Putin",
+      "Francois Hollande",
+      "Barack Obama",
+      "None of the Above"
+    ],
+
+    "answer": "Barack Obama"
+  },
+
+  "15": {
+    "question": "Who was crowned as Miss Universe 2014?",
+
+    "options": [
+      "Paulina Vega",
+      "Lucia Aldana",
+      "Gabriela Isler",
+      "Melissa Gurgel"
+    ],
+
+    "answer": "Paulina Vega"
+  },
+
+  "16": {
+    "question": "When did RBI signed Special Currency Swap Agreement with the Central Bank of Sri Lanka",
+
+    "options": [
+      "17th July 2015",
+      "7th June 2015",
+      "13th July 2015",
+      "None of the Above"
+    ],
+
+    "answer": "17th July 2015"
+  },
+
+  "17": {
+    "question": "GNLF stands for",
+
+    "options": [
+      "Gorkha National Liberation Front",
+      "Gross National Liberation Form",
+      "Both option A and B",
+      "None of the above"
+    ],
+
+    "answer": "Gorkha National Liberation Front"
+  },
+
+  "18": {
+    "question": "Who was the Scottish bacteriologist who discovered penicillin?",
+
+    "options": [
+      "Alexander Fleming",
+      "Albert Einstein",
+      "Archimeder",
+      "Aryabhatta"
+    ],
+
+    "answer": "Alexander Fleming"
+  },
+
+  "19": {
+    "question": "Where is the Judicature of Orissa?",
+
+    "options": [
+      "Bhubaneswar",
+      "Cuttack",
+      "Both",
+      "None of the above"
+    ],
+
+    "answer": "Cuttack"
+  },
+
+  "20": {
+    "question": "Which is the associated sport of Bombay Gold Cup?",
+
+    "options": [
+      "Basketball",
+      "Weightlifting",
+      "Hockey",
+      "Football"
+    ],
+
+    "answer": "Hockey"
   }
 }

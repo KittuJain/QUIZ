@@ -36,5 +36,150 @@
     "options": ["USA", "Fiji", "South Africa", "India"],
 
     "answer": "Fiji"
-  }
+  },
+
+  "5": {
+    "question": "Who is the first Indian woman to win an Asian Games gold in 400m run?",
+
+    "options": ["M.L.Valsamma", "P.T.Usha", "Kamaljit Sandhu", "K.Malleshwari"],
+
+    "answer": "Kamaljit Sandhu"
+  },
+
+  "6": {
+      "question": "Who won the Nobel Peace Prize in 2010?",
+
+      "options": ["Albert Arnold Gore", "Mohammed Unnus", "Liu Xiaobo", "Mohamed Elbaradei"],
+
+      "answer": "Liu Xiaobo"
+    },
+
+  "7": {
+      "question": "On which one of the following rivers is the Tehri HydroPower Complex located?",
+
+      "options": ["Alaknanda", "Bhagirathi", "Dhauliganga", "Mandakini"],
+
+      "answer": "Bhagirathi"
+    },
+
+  "8": {
+      "question": "Who among the following Indians has been honoured by a special Oscar?",
+
+      "options": ["G.P. Sippy", "Mahesh Bhatt", "Satyajit Ray", "Mira Nair"],
+
+      "answer": "Satyajit Ray"
+    },
+
+  "9": {
+      "question": "Who was the President of the constituent Assembly?",
+
+      "options": ["Dr.K.M.Munshi", "Jawaharlal Nehru", "Dr.B.R.Ambedkar", "Dr.Rajendra Prasad"],
+
+      "answer": "Dr.Rajendra Prasad"
+    },
+
+  "10": {
+      "question": "When did the Commonwealth completed its 50 years?",
+
+      "options": ["September 1999", "Octomber 1999", "November 1999", "December 1999"],
+
+      "answer": "November 1999"
+    },
+
+  "11": {
+      "question": "When is the World Population Day observed?",
+
+      "options": ["May 31", "October 4", "December 10", "July 11"],
+
+      "answer": "July 11"
+    },
+
+  "12": {
+      "question": "Who had the longest tenure as speaker of Lok Sabha?",
+
+      "options": ["A. G.V.Moulankar", "G.S.Dhillon", "Balram Jakhar", "P.A.Sangma"],
+
+      "answer": "Balram Jakhar"
+    },
+
+  "13": {
+      "question": "What is the Planning Commission of India renamed to?",
+
+      "options": ["NITI Aayog", "NITI Darshan", "NITI Mandal", "None of the Above"],
+
+      "answer": "NITI Aayog"
+    },
+
+  "14": {
+      "question": "Who is appointed as the Chief Election Commissioner of India in January,2015?",
+
+      "options": ["V. S. Sampath", "S. Y. Quraishi","Harishankar Brahma",  "Alok Joshi"],
+
+      "answer": "Harishankar Brahma"
+    },
+
+  "15": {
+      "question": "Which day is observed as World Radio Day",
+
+      "options": ["1st February", "5th February", "13th February", "20th February"],
+
+      "answer": "13th February"
+    },
+
+  "16": {
+      "question": "Where is Garampani sanctuary located?",
+
+      "options": ["Junagarh, Gujarat", "Diphu, Assam", "Kohima, Nagaland", "Gangtok, Sikkim"],
+
+      "answer": "Diphu, Assam"
+    },
+
+  "17": {
+      "question": "When was Hamid Karzai chosen the president of Afghanistan?",
+
+      "options": ["2000", "2001", "2002", "2003"],
+
+      "answer": "2002"
+    },
+
+  "18": {
+      "question": "ICAO stands for",
+
+      "options": [
+        "Institute of Company of Accounts Organization",
+        "International Civil Aviation Organization",
+        "Indian Corporation of Agriculture Organization",
+        "None of the above"
+      ],
+
+      "answer": "International Civil Aviation Organization"
+    },
+
+  "19": {
+      "question": "What is the purpose of United Nations Fund for Population Activities (UNFPA) is",
+
+      "options": [
+        "Studying population dynamics",
+        "Collecting population data",
+        "Evolving population policies, family planning and related programmes",
+        "All of the above"
+      ],
+
+      "answer": "Studying population dynamics"
+    },
+
+  "20": {
+      "question": "Where is the permanent secretariat of the SAARC?",
+
+      "options": [
+        "New Delhi",
+        "Islamabad",
+        "Kathmandu",
+        "Colombo"
+      ],
+
+      "answer": "Kathmandu"
+    }
+
+
 }
