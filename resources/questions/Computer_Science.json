@@ -1,0 +1,50 @@
+{
+    "1": {
+        "question": " The ‘$’ present in the RegExp object is called a?",
+
+        "options": [
+            "Character",
+            "Matcher",
+            "Metacharacter",
+            "Metadata"
+        ],
+
+        "answer": "Metacharacter"
+    },
+    "2": {
+        "question": "The script tag must be placed in",
+
+        "options": [
+            "Head",
+            "Head and body",
+            "Title and head",
+            "All of the mentioned"
+        ],
+
+        "answer": "Head and body"
+    },
+    "3": {
+        "question": "A statement block is a",
+
+        "options": [
+            "Conditional block",
+            "Block that contains a single statement",
+            "Both a and b",
+            "Block that combines multiple statements into a single compound statement"
+        ],
+
+        "answer": "Block that combines multiple statements into a single compound statement"
+    },
+    "4": {
+        "question": "The “var” and “function” are",
+
+        "options": [
+            "Keywords",
+            "Declaration statements",
+            "Datatypes",
+            "Prototypes"
+        ],
+
+        "answer": "Declaration statements"
+    }
+}

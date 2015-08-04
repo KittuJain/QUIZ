@@ -4,5 +4,8 @@
   },
   "2": {
     "name": "General Knowledge 2", "location": "questions/General_Knowledge2"
+  },
+  "3": {
+    "name": "Computer Science", "location": "questions/Computer_Science"
   }
 }
