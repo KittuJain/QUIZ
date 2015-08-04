@@ -18,7 +18,7 @@
 }
 
 .options-container {
-    height: 45px;
+    height: 74px;
     width: 325px;
     padding: 5px;
     margin: 15px;
@@ -26,6 +26,7 @@
     float: left;
     background-color: #949494;
     cursor: pointer;
+    text-align: center;
 }
 
 .options-container
@@ -48,9 +49,9 @@
 }
 
 .answer-span {
-    padding: 5px;
-    position: absolute;
     margin-top: 7px;
+    word-break: break-word;
+    display: inline-block;
 }
 
 .hide {
