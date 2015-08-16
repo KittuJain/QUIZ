@@ -22,6 +22,8 @@ router.post "/login", (request, response) ->
 
 router.get "/logout", users.get.logout
 
+router.get "/users", users.get.allUser
+
 router.get "/quizzes", (request, response) ->
   quizzes = require("../resources/quizzes.json")
   questionPath = "../resources/"

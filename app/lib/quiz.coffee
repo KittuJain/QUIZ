@@ -12,6 +12,10 @@ _getUser = (userEmail, db, onComplete) ->
       console.log err
     onComplete null, user
 
+_getAllUsers = (db, onComplete) ->
+  allUsersQuery = "select * from login"
+  db.all allUsersQuery, onComplete
+
 init = (location) ->
 
   operate = (operation) ->
@@ -33,6 +37,7 @@ init = (location) ->
   records =
     addUser: operate(_addUser)
     getUser: operate(_getUser)
+    getAllUsers: operate(_getAllUsers)
 
   records
 

@@ -3,12 +3,9 @@ var gutil = require('gulp-util');
 var del = require('del');
 var _ = require('lodash');
 var coffee = require('gulp-coffee');
-var autoprefix = require('gulp-autoprefixer');
 var changed = require('gulp-changed');
-var cheerio = require('gulp-cheerio');
 var connect = require('gulp-connect');
-var modRewrite = require('connect-modrewrite');
-var run = require('gulp-run');
+nodemon = require('gulp-nodemon');
 
 var SRC = {
     app: {
@@ -76,8 +73,11 @@ gulp.task(TASKS.watch, [TASKS.scripts, TASKS.helpers, TASKS.jades, TASKS.styles]
     return gulp.watch(SRC.app.jade, [TASKS.htmls]);
 });
 
-gulp.task(TASKS.connect, [TASKS.watch], function() {
-  return gulp.src(DEST.build).pipe(run("node bin/www"))
+gulp.task(TASKS.connect, [TASKS.watch], function () {
+    nodemon({
+        script: 'bin/www'
+        , env: { 'NODE_ENV': 'development' }
+    });
 });
 
 gulp.task(TASKS.build, [TASKS.scripts, TASKS.helpers, TASKS.jades, TASKS.styles], function() {});
