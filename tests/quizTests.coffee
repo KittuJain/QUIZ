@@ -1,4 +1,4 @@
-lib = require("../lib/quiz.js")
+lib = require("../app/lib/quiz.js")
 assert = require("chai").assert
 fs = require("fs")
 dbFileData = fs.readFileSync("tests/data/quiz.db.backup")
