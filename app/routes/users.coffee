@@ -65,11 +65,6 @@ loginUser = (request, response) ->
           error: "Incorrect E-mail Id or password"
 
 
-_get.allUser = (request, response) ->
-  quiz.getAllUsers((error, list) ->
-    if not error then response.render("list/allUser/allUser", {list: list}))
-
-
 
 users.get = _get
 users.post = _post
