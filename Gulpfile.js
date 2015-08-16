@@ -14,6 +14,8 @@ var SRC = {
     app: {
         root: "app",
         coffee: "app/**/*.coffee",
+        jquery: "app/**/*.min.js",
+        json: "app/**/*.json",
         jade: "app/**/*.jade",
         css: "app/**/*.css"
     },
@@ -28,6 +30,7 @@ var DEST = {
 
 var TASKS = {
     scripts: "_scripts",
+    helpers: "_helpers",
     jades: "_jades",
     clean: "clean",
     styles: "_styles",
@@ -42,6 +45,11 @@ gulp.task(TASKS.scripts, function() {
     .pipe(coffee()).on('error', gutil.log)
     .pipe(gulp.dest(DEST.build))
     .pipe(connect.reload());
+});
+
+gulp.task(TASKS.helpers, function() {
+    return gulp.src([SRC.app.jquery, SRC.app.json])
+    .pipe(gulp.dest(DEST.build))
 });
 
 gulp.task(TASKS.clean, function(cb) {
@@ -62,14 +70,14 @@ gulp.task(TASKS.styles, function() {
         .pipe(connect.reload());
 });
 
-gulp.task(TASKS.watch, [TASKS.scripts, TASKS.jades, TASKS.styles], function() {
+gulp.task(TASKS.watch, [TASKS.scripts, TASKS.helpers, TASKS.jades, TASKS.styles], function() {
     gulp.watch(SRC.app.css, [TASKS.styles]);
     gulp.watch(SRC.app.coffee, [TASKS.scripts]);
     return gulp.watch(SRC.app.jade, [TASKS.htmls]);
 });
 
 gulp.task(TASKS.connect, [TASKS.watch], function() {
-  return gulp.src(DEST.build).pipe(run("coffee bin/www"))
+  return gulp.src(DEST.build).pipe(run("node bin/www"))
 });
 
-gulp.task(TASKS.build, [TASKS.scripts, TASKS.jades, TASKS.styles], function() {});
+gulp.task(TASKS.build, [TASKS.scripts, TASKS.helpers, TASKS.jades, TASKS.styles], function() {});

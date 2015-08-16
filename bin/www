@@ -1,11 +1,9 @@
-#!/usr/bin/env coffee
+var debug = require("debug")("quiz");
+var app = require("../build/app");
 
-debug = require("debug")("quiz")
-app = require("../build/app")
+app.set("port", process.env.PORT || 3000);
 
-app.set "port", process.env.PORT or 3000
-
-server = app.listen(app.get("port"), ->
-  console.log "server is listning on port ", +server.address().port
-  debug "Express server listening on port " + server.address().port
-)
+var server = app.listen(app.get("port"), function() {
+  console.log("server is listning on port ", +server.address().port);
+  return debug("Express server listening on port " + server.address().port);
+});

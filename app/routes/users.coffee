@@ -59,7 +59,7 @@ loginUser = (request, response) ->
       isValidPassword = bcrypt.compareSync(user.password, existingUser.password)
       if isValidPassword
         request.session.userEmail = user.email
-        response.redirect "/dashboard"
+        response.redirect "/quizzes"
       else
         response.render "login",
           error: "Incorrect E-mail Id or password"

@@ -54,7 +54,6 @@ if app.get('env') == 'development'
       message: err.message
       error: err
       email: user
-    return
 
 # production error handler
 # no stacktraces leaked to user
