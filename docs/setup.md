@@ -9,16 +9,17 @@
     ✔ node                           0.10.3
     ✔ npm                            2.5.1
     ✔ nodemon                        1.3.5
+    ✔ gulp                           3.9.0
 
 If you miss anything, don't get panic, Google will help you out.
 
 Hey don't be so rush, get your nvm also. What to do????? Just do the following -
-    
+
     npm install nvm
-    
+
 didn't work??? Then try
-    
-    brew install nvm
+
+    brew install nvm (For MAC only)
 
 Hence you have install all the Global Setup....
 ### We are ready to rock
@@ -26,5 +27,5 @@ Hence you have install all the Global Setup....
 ### Do these internal setup for the project
 
     npm install
-    
+
 Wait till it finish. Is it done? Then wow. You are ready now.
