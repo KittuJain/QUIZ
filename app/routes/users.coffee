@@ -67,7 +67,6 @@ loginUser = (request, response) ->
 
 _get.allUser = (request, response) ->
   quiz.getAllUsers((error, list) ->
-    console.log error, list
     if not error then response.render("list/allUser/allUser", {list: list}))
 
 
