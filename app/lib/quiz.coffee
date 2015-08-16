@@ -2,17 +2,15 @@ sqlite3 = require("sqlite3").verbose();
 
 _addUser = (user, db, onComplete) ->
   insert_user = "insert into login(useremail,password) values(#{user.email}, #{user.password})"
-  db.run (insert_user, (err) ->
+  db.run insert_user, (err) ->
     _getUser user.email, db, onComplete
-  )
 
 _getUser = (userEmail, db, onComplete) ->
   select_user = "select * from login where useremail=#{userEmail}"
-  db.get (select_user, (err, user) ->
+  db.get select_user, (err, user) ->
     if err
       console.log err
     onComplete null, user
-  )
 
 init = (location) ->
 
