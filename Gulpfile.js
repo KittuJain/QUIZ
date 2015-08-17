@@ -5,7 +5,8 @@ var _ = require('lodash');
 var coffee = require('gulp-coffee');
 var changed = require('gulp-changed');
 var connect = require('gulp-connect');
-nodemon = require('gulp-nodemon');
+var nodemon = require('gulp-nodemon');
+var run = require('gulp-run');
 
 var SRC = {
     app: {
@@ -17,12 +18,14 @@ var SRC = {
         css: "app/**/*.css"
     },
     test: {
-        coffee: "tests/**/*.coffee"
+        coffee: "tests/**/*.coffee",
+        json: "tests/**/*.json"
     }
 };
 
 var DEST = {
-    build: "build"
+    build: "build",
+    test: "build/tests"
 };
 
 var TASKS = {
@@ -33,7 +36,9 @@ var TASKS = {
     styles: "_styles",
     watch: "_watch",
     connect: "connect",
-    build: "build"
+    build: "build",
+    runTest: "test",
+    copyTestJSON: "_copyTestJSON"
 };
 
 gulp.task(TASKS.scripts, function() {
@@ -78,6 +83,20 @@ gulp.task(TASKS.connect, [TASKS.watch], function () {
         script: 'bin/www'
         , env: { 'NODE_ENV': 'development' }
     });
+});
+
+gulp.task(TASKS.copyTestJSON, function(){
+    return gulp.src(SRC.test.json)
+        .pipe(gulp.dest(DEST.test))
+
+});
+
+gulp.task(TASKS.runTest, [TASKS.scripts, TASKS.helpers, TASKS.copyTestJSON], function () {
+    return gulp.src(SRC.test.coffee)
+        .pipe(changed(DEST.test, { extension: '.js'}))
+        .pipe(coffee()).on('error', gutil.log)
+        .pipe(gulp.dest(DEST.test))
+        .pipe(run("sh scripts/resetEnv.sh && sh scripts/deploy.sh && mocha tests && mocha build/tests/**/*.js"))
 });
 
 gulp.task(TASKS.build, [TASKS.scripts, TASKS.helpers, TASKS.jades, TASKS.styles], function() {});
