@@ -19,19 +19,19 @@ You have done with GET and SET, now it is the time for GO :
 Run this command when you are running this app for the very first time
 For regular development work, run :
 
-    $ npm run dev
+    $ gulp prepare
 
 
 If you have done any changes on database scripts, then always run
 
-    $ npm run start / $ npm run setup
+    $ gulp clean prepare
 
 
 # Testing
 
 ## Testing unit test
 
-    $ npm run test
+    $ gulp test
 
 - put your unit level tests into tests/*.js
 - DO NOT CREATE MULTIPLE NESTED FOLDERS
