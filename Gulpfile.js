@@ -38,7 +38,9 @@ var TASKS = {
     connect: "connect",
     build: "build",
     runTest: "test",
-    copyTestJSON: "_copyTestJSON"
+    copyTestJSON: "_copyTestJSON",
+    prepare: "prepare",
+    reset: "_reset"
 };
 
 gulp.task(TASKS.scripts, function() {
@@ -100,3 +102,12 @@ gulp.task(TASKS.runTest, [TASKS.scripts, TASKS.helpers, TASKS.copyTestJSON], fun
 });
 
 gulp.task(TASKS.build, [TASKS.scripts, TASKS.helpers, TASKS.jades, TASKS.styles], function() {});
+
+gulp.task(TASKS.prepare, [TASKS.reset], function(){
+    run("sh scripts/deploy.sh").exec();
+});
+
+gulp.task(TASKS.reset, function(){
+    run("sh scripts/resetEnv.sh").exec();
+});
+
